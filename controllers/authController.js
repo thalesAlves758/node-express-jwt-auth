@@ -47,7 +47,7 @@ module.exports.signup_post = async (req, res) => {
         });
         const token = createToken(user.id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(201).json(user.id);
+        res.status(201).json({ user: user.id });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
